@@ -1,7 +1,5 @@
 import { useRouter } from 'next/router';
 
-
-
 export default function useQuery() {
   const { push, pathname, query } = useRouter();
   const typedQuery = query as Record<string, string>;
