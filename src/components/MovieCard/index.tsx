@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
-import useQuery from 'hooks/useQuery';
 import useStateSelector from 'hooks/useStateSelector';
 import DeleteConfirmation from 'components/Modals/DeleteConfirmation';
 import MovieFormModal from 'components/Modals/MovieFormModal';
@@ -20,8 +19,7 @@ interface MovieCardProps {
 
 const MovieCard = ({ movie, onClick }: MovieCardProps) => {
   const dispatch = useDispatch();
-  const { replace } = useRouter();
-  const { currentQuery } = useQuery();
+  const { push, query } = useRouter();
   const { deleteMovieLoading } = useStateSelector((state) => state.movies);
   const { poster_path, title, release_date, genres } = movie;
   const [isBlurred, setIsBlurred] = useState(false);
@@ -29,7 +27,7 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
   const [isDeletingMovie, setIsDeletingMovie] = useState(false);
   const [editingMovie, setEditingMovie] = useState<Movie | undefined>();
   const yearsOfTheMovie = moment(release_date).format('YYYY');
-  const isSelectedMovie = currentQuery.get('movie') === movie.id.toString();
+  const isSelectedMovie = query.movie === movie.id.toString();
 
   const onCardMouseLeave = () => {
     if (hasMoreActionSelected) setHasMoreActionSelected(false);
@@ -48,7 +46,7 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
 
   const onDeleteMovieConfirmation = () => {
     dispatch(deleteMovie(movie.id, () => setIsDeletingMovie(false)));
-    if (isSelectedMovie) replace(ROUTES.search);
+    if (isSelectedMovie) push(ROUTES.search);
   };
 
   const onMoreActionClose = (event: React.MouseEvent<SVGAElement>) => {

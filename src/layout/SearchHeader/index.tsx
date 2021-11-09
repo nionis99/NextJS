@@ -4,7 +4,7 @@ import Button from 'components/Button';
 import constants, { testingConstants } from 'utils/Constants';
 
 interface SearchHeaderProps extends HTMLAttributes<HTMLDivElement> {
-  defaultSearchValue: string;
+  defaultSearchValue: string | string[];
   setSearchValue: (searchValue: string) => void;
   onSearchSubmit: (e: React.MouseEvent<HTMLButtonElement>) => void;
   openAddMovie: () => void;

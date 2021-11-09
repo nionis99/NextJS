@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { fetchMovie, fetchMovies } from 'actions/movieActions';
 import useStateSelector from 'hooks/useStateSelector';
-import useQuery from 'hooks/useQuery';
 import SearchHeader from 'layout/SearchHeader';
 import Content from 'layout/Content';
 import MovieDetailsHeader from 'layout/MovieDetailsHeader';
@@ -15,10 +14,7 @@ const MoviesPage = () => {
   const dispatch = useDispatch();
   const { replace, pathname, query } = useRouter();
   const { searchValue = '' } = query;
-  const { currentQuery } = useQuery();
-  const genreFilter = currentQuery.get('genre');
-  const sortByValue = currentQuery.get('sortBy');
-  const movieId = currentQuery.get('movie');
+  const { genre: genreFilter = '', sortBy: sortByValue = 'genres', movie: movieId = '' } = query;
   const [isMovieFormOpen, setIsMovieFormOpen] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState(searchValue);
 

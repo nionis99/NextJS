@@ -14,15 +14,14 @@ const sortOptions = [
 ];
 
 const MovieFilters = ({ className }: HTMLAttributes<HTMLDivElement>) => {
-  const { currentQuery, addQuery } = useQuery();
-  const genreFilter = currentQuery.get('genre');
-  const sortByValue = currentQuery.get('sortBy');
+  const { query, addQuery } = useQuery();
+  const {genre: genreFilter, sortBy: sortByValue} = query;
 
   const onSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => addQuery('sortBy', event.target.value);
 
   const onFilterClick = (event: React.MouseEvent<HTMLSpanElement>) => {
     const selectedFilter = event.currentTarget.innerText[0] + event.currentTarget.innerText.substring(1).toLowerCase();
-    addQuery('genre', selectedFilter);
+    return addQuery('genre', selectedFilter);
   };
 
   return (
