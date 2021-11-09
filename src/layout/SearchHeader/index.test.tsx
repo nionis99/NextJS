@@ -1,25 +1,21 @@
-import '@testing-library/jest-dom';
 import React from 'react';
 import renderer from 'react-test-renderer';
-// import { BrowserRouter } from 'react-router-dom';
 import { fireEvent, render } from '@testing-library/react';
 import { MovieMockData } from '../../../__mocks__/data';
-import constants, { testingConstants } from 'utils/Constants';
 import SearchHeader from './index';
+import constants, { testingConstants } from 'utils/Constants';
 
 describe('Movie search header component', () => {
   const onClickAddMovie = jest.fn();
   const onSearchSubmit = jest.fn().mockImplementation((e) => e.preventDefault());
   const setSearchValue = jest.fn();
   const wrapper = (
-    <BrowserRouter>
-      <SearchHeader
-        onSearchSubmit={onSearchSubmit}
-        setSearchValue={setSearchValue}
-        defaultSearchValue={MovieMockData.title}
-        openAddMovie={onClickAddMovie}
-      />
-    </BrowserRouter>
+    <SearchHeader
+      onSearchSubmit={onSearchSubmit}
+      setSearchValue={setSearchValue}
+      defaultSearchValue={MovieMockData.title}
+      openAddMovie={onClickAddMovie}
+    />
   );
 
   it('should render movie search header component', () => {

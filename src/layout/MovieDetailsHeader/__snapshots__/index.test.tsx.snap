@@ -31,7 +31,6 @@ exports[`Movie details header component should render movie details header compo
       <img
         alt="The Avengers 2"
         height={200}
-        onError={[Function]}
         src="https://image.tmdb.org/t/p/w500/cezWGskPY5x7GaglTTRN4Fugfb8.jpg"
         width={400}
       />

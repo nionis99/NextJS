@@ -1,17 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-// import { BrowserRouter } from 'react-router-dom';
 import MovieFilters from './index';
+import '../../../__mocks__/useRouter';
 
 describe('Movie filters', () => {
-  const wrapper = (
-    <BrowserRouter>
-      <MovieFilters />
-    </BrowserRouter>
-  );
-
   it('should render movie filters component', () => {
-    const elem = renderer.create(wrapper).toJSON();
+    const elem = renderer.create(<MovieFilters />).toJSON();
     expect(elem).toMatchSnapshot();
   });
 });

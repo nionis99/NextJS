@@ -1,22 +1,19 @@
-import '@testing-library/jest-dom';
 import React from 'react';
 import moment from 'moment';
 import renderer from 'react-test-renderer';
-// import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { fireEvent, render } from '@testing-library/react';
 import { MovieMockData } from '../../../__mocks__/data';
 import { testingConstants } from 'utils/Constants';
 import MovieCard from './index';
 import store from 'store';
+import '../../../__mocks__/useRouter';
 
 describe('Movie card component', () => {
   const onClick = jest.fn();
   const wrapper = (
     <Provider store={store}>
-      <BrowserRouter>
-        <MovieCard movie={MovieMockData} onClick={onClick} />
-      </BrowserRouter>
+      <MovieCard movie={MovieMockData} onClick={onClick} />
     </Provider>
   );
 

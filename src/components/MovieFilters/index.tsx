@@ -1,8 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
-
 import ArrowDown from 'assets/icons/arrowDown.svg';
-import useQuery from 'hooks/useQuery';
+import useRouterQuery from 'hooks/useRouterQuery';
 
 const defaultTabClassName =
   'text-white p-1 md:p-5 cursor-pointer hover:text-primary focus:outline-none uppercase font-medium border-b-2';
@@ -14,8 +13,8 @@ const sortOptions = [
 ];
 
 const MovieFilters = ({ className }: HTMLAttributes<HTMLDivElement>) => {
-  const { query, addQuery } = useQuery();
-  const {genre: genreFilter, sortBy: sortByValue} = query;
+  const { query, addQuery } = useRouterQuery();
+  const { genre: genreFilter, sortBy: sortByValue } = query;
 
   const onSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => addQuery('sortBy', event.target.value);
 

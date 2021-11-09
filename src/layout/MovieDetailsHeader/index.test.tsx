@@ -1,22 +1,18 @@
-import '@testing-library/jest-dom';
 import React from 'react';
 import moment from 'moment';
 import renderer from 'react-test-renderer';
-// import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { fireEvent, render } from '@testing-library/react';
-import { MovieMockData } from '../../../__mocks__/data';
-import { testingConstants } from 'utils/Constants';
 import store from 'store';
 import MovieDetailsHeader from './index';
+import { testingConstants } from 'utils/Constants';
+import { MovieMockData } from '../../../__mocks__/data';
 
 describe('Movie details header component', () => {
   const onClick = jest.fn();
   const wrapper = (
     <Provider store={store}>
-      <BrowserRouter>
-        <MovieDetailsHeader movie={MovieMockData} onSearchClick={onClick} />
-      </BrowserRouter>
+      <MovieDetailsHeader movie={MovieMockData} onSearchClick={onClick} />
     </Provider>
   );
 
