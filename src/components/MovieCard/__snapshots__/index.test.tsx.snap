@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie card component should render movie card component 1`] = `
+<div
+  className="flex-col cursor-pointer text-white text-opacity-75"
+  data-testid={11}
+  onClick={[MockFunction]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <div
+    className="relative pb-4"
+  >
+    <img
+      alt="The Avengers 2"
+      onError={[Function]}
+      src="https://image.tmdb.org/t/p/w500/cezWGskPY5x7GaglTTRN4Fugfb8.jpg"
+    />
+  </div>
+  <p
+    className="flex w-full"
+  >
+    <span
+      className="font-bold"
+    >
+      The Avengers 2
+    </span>
+    <span
+      className="ml-auto px-2 h-7 py-1 text-xs border-2 rounded-lg border-gray-400 border-opacity-50"
+    >
+      2012
+    </span>
+  </p>
+  <small>
+    Science Fiction, Action, Adventure
+  </small>
+</div>
+`;

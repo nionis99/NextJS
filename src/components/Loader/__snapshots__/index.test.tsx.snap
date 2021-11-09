@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Loader component 1`] = `
+<div
+  className="flex flex-grow h-full justify-center items-center"
+>
+  <div
+    className="animate-spin rounded-full border-b-2 border-white undefined"
+  />
+</div>
+`;

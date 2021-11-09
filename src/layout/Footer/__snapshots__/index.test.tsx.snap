@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render footer component 1`] = `
+<footer
+  className="flex items-center justify-center bg-footer w-full py-6 "
+>
+  <test-file-stub
+    height={24}
+    width={150}
+  />
+</footer>
+`;

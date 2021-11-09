@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render landing component 1`] = `
+<div
+  className="flex bg-landing bg-cover bg-center bg-no-repeat justify-center h-screen text-white p-4 "
+>
+  <div>
+    TEST
+  </div>
+  <div
+    className="flex mt-auto"
+  >
+    <test-file-stub
+      height={60}
+      width={360}
+    />
+  </div>
+</div>
+`;

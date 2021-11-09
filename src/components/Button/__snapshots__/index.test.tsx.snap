@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render medium outline-primary Button component 1`] = `
+<button
+  className="flex justify-center items-center rounded border p-2 border-primary text-primary px-2 md:px-11 py-1 md:py-2.5"
+>
+  Outline-primary
+</button>
+`;
+
+exports[`should render medium primary Button component 1`] = `
+<button
+  className="flex justify-center items-center rounded border p-2 text-white bg-primary border-primary px-2 md:px-11 py-1 md:py-2.5"
+>
+  Primary
+</button>
+`;
+
+exports[`should render medium secondary Button component 1`] = `
+<button
+  className="flex justify-center items-center rounded border p-2 text-primary bg-gray68 border-gray68 px-2 md:px-11 py-1 md:py-2.5"
+>
+  Secondary
+</button>
+`;

@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie search header component should render movie search header component 1`] = `
+<header
+  className="flex-col h-96 bg-header py-5 px-4 md:px-16 text-white bg-cover "
+>
+  <div
+    className="flex w-full justify-between items-start"
+  >
+    <test-file-stub
+      height={24}
+      width={150}
+    />
+    <button
+      className="flex justify-center items-center rounded border p-2 text-primary bg-gray68 border-gray68 px-1 py-0.5 md:px-4 md:py-1"
+      data-testid={0}
+      onClick={[MockFunction]}
+    >
+      + ADD MOVIE
+    </button>
+  </div>
+  <div
+    className="flex-col m-2 md:mx-16 md:my-11"
+  >
+    <label
+      className="flex text-2xl md:text-5xl"
+    >
+      FIND YOUR MOVIE
+    </label>
+    <form
+      className="flex mt-2 md:mt-9 w-full"
+    >
+      <input
+        className="flex rounded p-1 md:p-4 text-lg w-full bg-gray80 opacity-60 focus:outline-none"
+        data-testid={1}
+        defaultValue="The Avengers 2"
+        name="search"
+        onInput={[Function]}
+        placeholder="What do you want to watch?"
+      />
+      <button
+        className="flex justify-center items-center rounded border p-2 text-white bg-primary border-primary px-4 py-2 md:px-16 md:py-4 flex ml-2 uppercase"
+        data-testid={2}
+        onClick={[MockFunction]}
+      >
+        Search
+      </button>
+    </form>
+  </div>
+</header>
+`;

@@ -1,0 +1,57 @@
+{
+  "plugins": [
+    "@typescript-eslint",
+    "react-hooks",
+    "prettier"
+  ],
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "semi": 0,
+    "react/jsx-indent": [
+      "error",
+      2
+    ],
+    "max-len": [
+      2,
+      120,
+      2
+    ],
+    "no-console": "warn",
+    "comma-dangle": [
+      "off",
+      "never"
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx",
+          ".css"
+        ]
+      }
+    ],
+    "react/no-set-state": "off",
+    "prettier/prettier": [
+      "error"
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "prefer-promise-reject-errors": "off",
+    "camelcase": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/ban-ts-comment": "error",
+    "@typescript-eslint/no-explicit-any": "error"
+  }
+}

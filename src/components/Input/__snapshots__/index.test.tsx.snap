@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Input component 1`] = `
+<div>
+  <label
+    className="block tracking-wide text-xs font-bold mb-2 upper-case text-primary"
+  >
+    Input
+  </label>
+  <input
+    className="appearance-none block w-full bg-gray80 text-white border rounded py-2 h-12 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-200 border-gray80"
+  />
+</div>
+`;
+
+exports[`should render Input component with error message 1`] = `
+<div>
+  <label
+    className="block tracking-wide text-xs font-bold mb-2 upper-case text-red-500"
+  >
+    Error input
+  </label>
+  <input
+    className="appearance-none block w-full bg-gray80 text-white border rounded py-2 h-12 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-200 border-red-500"
+  />
+  <p
+    className="text-red-500 text-xs italic"
+  >
+    Something wrong!
+  </p>
+</div>
+`;
