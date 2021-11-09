@@ -8,7 +8,6 @@ import { deleteMovie } from 'actions/movieActions';
 import { Movie } from 'reducers/movieReducer/types';
 import Dots from 'assets/icons/dots.svg';
 import XIcon from 'assets/icons/x.svg';
-import NotFoundImage from 'assets/images/not_found.png';
 import { ROUTES, testingConstants } from 'utils/Constants';
 import moment from 'moment';
 
@@ -101,7 +100,7 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
               )}
             </>
           )}
-          <img src={poster_path} alt={title} onError={(event) => (event.currentTarget.src = NotFoundImage)} />
+          <img src={poster_path} alt={title} />
         </div>
         <p className="flex w-full">
           <span className="font-bold">{title}</span>
