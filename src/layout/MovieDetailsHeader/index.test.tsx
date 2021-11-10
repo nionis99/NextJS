@@ -6,13 +6,13 @@ import { fireEvent, render } from '@testing-library/react';
 import store from 'store';
 import MovieDetailsHeader from './index';
 import { testingConstants } from 'utils/Constants';
-import { MovieMockData } from '../../../__mocks__/data';
+import { movieMockData } from '../../../__mocks__/data';
 
 describe('Movie details header component', () => {
   const onClick = jest.fn();
   const wrapper = (
     <Provider store={store}>
-      <MovieDetailsHeader movie={MovieMockData} onSearchClick={onClick} />
+      <MovieDetailsHeader movie={movieMockData} onSearchClick={onClick} />
     </Provider>
   );
 
@@ -24,10 +24,10 @@ describe('Movie details header component', () => {
   it('should be clicked and invoked onClick function passed in props', () => {
     const { getByText, getByTestId } = render(wrapper);
     expect.assertions(5);
-    expect(getByText(MovieMockData.title)).toBeInTheDocument();
-    expect(getByText(moment(MovieMockData.release_date).format('YYYY'))).toBeInTheDocument();
-    expect(getByText(MovieMockData.overview)).toBeInTheDocument();
-    expect(getByText(MovieMockData.vote_average)).toBeInTheDocument();
+    expect(getByText(movieMockData.title)).toBeInTheDocument();
+    expect(getByText(moment(movieMockData.release_date).format('YYYY'))).toBeInTheDocument();
+    expect(getByText(movieMockData.overview)).toBeInTheDocument();
+    expect(getByText(movieMockData.vote_average)).toBeInTheDocument();
     fireEvent.click(getByTestId(testingConstants.searchButton));
     expect(onClick).toBeCalledTimes(1);
   });

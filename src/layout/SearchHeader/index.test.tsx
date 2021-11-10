@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { fireEvent, render } from '@testing-library/react';
-import { MovieMockData } from '../../../__mocks__/data';
+import { movieMockData } from '../../../__mocks__/data';
 import SearchHeader from './index';
 import constants, { testingConstants } from 'utils/Constants';
 
@@ -13,7 +13,7 @@ describe('Movie search header component', () => {
     <SearchHeader
       onSearchSubmit={onSearchSubmit}
       setSearchValue={setSearchValue}
-      defaultSearchValue={MovieMockData.title}
+      defaultSearchValue={movieMockData.title}
       openAddMovie={onClickAddMovie}
     />
   );
@@ -27,8 +27,8 @@ describe('Movie search header component', () => {
     const { getByText, getByTestId } = render(wrapper);
     expect.assertions(3);
     expect(getByText(constants.headerTitle)).toBeInTheDocument();
-    fireEvent.change(getByTestId(testingConstants.searchHeaderInput), { target: { value: MovieMockData.title } });
-    expect(getByTestId(testingConstants.searchHeaderInput)).toHaveValue(MovieMockData.title);
+    fireEvent.change(getByTestId(testingConstants.searchHeaderInput), { target: { value: movieMockData.title } });
+    expect(getByTestId(testingConstants.searchHeaderInput)).toHaveValue(movieMockData.title);
     fireEvent.click(getByTestId(testingConstants.searchSubmitButton));
     expect(onSearchSubmit).toBeCalledTimes(1);
   });

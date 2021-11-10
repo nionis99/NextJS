@@ -12,9 +12,8 @@ import { ROUTES } from 'utils/Constants';
 
 const MoviesPage = () => {
   const dispatch = useDispatch();
-  const { replace, pathname, query } = useRouter();
-  const { searchValue = '' } = query;
-  const { genre: genreFilter = '', sortBy: sortByValue = 'genres', movie: movieId = '' } = query;
+  const { replace, query, pathname } = useRouter();
+  const { searchValue = '', genre: genreFilter = '', sortBy: sortByValue = 'genres', movie: movieId = '' } = query;
   const [isMovieFormOpen, setIsMovieFormOpen] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState(searchValue);
 
@@ -35,7 +34,9 @@ const MoviesPage = () => {
     return searchInputValue ? replace(`${ROUTES.search}/${searchInputValue}`) : replace(ROUTES.search);
   };
 
-  const onMovieClick = (movieId: string) => replace({ pathname, search: `?movie=${movieId}` });
+  const onMovieClick = (movieId: string) => {
+    return replace({ pathname, search: `?movie=${movieId}` }, `${ROUTES.search}/${searchInputValue}?movie=${movieId}`);
+  };
 
   useEffect(() => {
     dispatch(fetchMovies(sortByValue, genreFilter, searchValue));

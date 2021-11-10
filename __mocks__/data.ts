@@ -1,5 +1,5 @@
 export const genres = ['Crime', 'Documentary', 'Horror', 'Comedy'];
-export const MovieMockData = {
+export const movieMockData = {
   id: 0,
   title: 'The Avengers 2',
   vote_average: 7.5,

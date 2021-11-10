@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import useStateSelector from 'hooks/useStateSelector';
 import DeleteConfirmation from 'components/Modals/DeleteConfirmation';
 import MovieFormModal from 'components/Modals/MovieFormModal';
@@ -45,7 +46,7 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
 
   const onDeleteMovieConfirmation = () => {
     dispatch(deleteMovie(movie.id, () => setIsDeletingMovie(false)));
-    if (isSelectedMovie) push(ROUTES.search);
+    if (isSelectedMovie) return push(ROUTES.search);
   };
 
   const onMoreActionClose = (event: React.MouseEvent<SVGAElement>) => {
@@ -78,7 +79,7 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
                 <Dots />
               </div>
               {hasMoreActionSelected && (
-                <ul className="absolute w-48 right-2 py-1 mt-2 bg-white bg-content rounded shadow-modal">
+                <ul className="absolute w-48 right-2 py-1 mt-2 bg-content rounded shadow-modal">
                   <p className="w-full p-1">
                     <XIcon className="ml-auto mb-1 mr-2 w-3 h-3" onClick={onMoreActionClose} />
                   </p>
@@ -100,7 +101,7 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
               )}
             </>
           )}
-          <img src={poster_path} alt={title} />
+          <Image src={poster_path} alt={title} />
         </div>
         <p className="flex w-full">
           <span className="font-bold">{title}</span>

@@ -1,9 +1,9 @@
 import React, { HTMLAttributes } from 'react';
 import moment from 'moment';
+import Image from 'next/image';
 import useStateSelector from 'hooks/useStateSelector';
 import Loader from 'components/Loader';
 import SearchButton from 'assets/icons/searchButton.svg';
-import NotFoundImage from 'assets/images/not_found.png';
 import { Movie } from 'reducers/movieReducer/types';
 import { testingConstants } from 'utils/Constants';
 
@@ -36,7 +36,7 @@ const MovieDetailsHeader = ({ onSearchClick, movie, className = '', ...rest }: M
           </div>
           <div className="flex flex-col md:flex-row md:justify-center pt-6">
             <div className="flex w-full md:w-1/3 justify-center items-center h-auto">
-              <img alt={title} src={poster_path} width={400} height={200} />
+              <Image alt={title} src={poster_path} width={400} height={200} />
             </div>
             <div className="w-full md:w-2/3 px-8">
               <p className="flex font-light justify-center md:justify-start pt-3 md:pt-0">

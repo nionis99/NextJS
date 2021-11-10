@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import MovieForm from './index';
-import { MovieMockData } from '../../../__mocks__/data';
+import { movieMockData } from '../../../__mocks__/data';
 
 describe('Movie form', () => {
   const onSubmit = jest.fn();
@@ -12,7 +12,7 @@ describe('Movie form', () => {
   });
 
   it('should render movie form with filled data', () => {
-    const elem = renderer.create(<MovieForm movie={MovieMockData} isLoading={false} onSubmit={onSubmit} />).toJSON();
+    const elem = renderer.create(<MovieForm movie={movieMockData} isLoading={false} onSubmit={onSubmit} />).toJSON();
     expect(elem).toMatchSnapshot();
   });
 });

@@ -1,6 +1,6 @@
 import movieReducer, { initialState } from 'reducers/movieReducer/index';
 import { MoviesActions } from 'actions/movieActions';
-import { MovieMockData } from '../../../__mocks__/data';
+import { movieMockData } from '../../../__mocks__/data';
 
 describe('movie reducer', () => {
   const errorMessage = ['Error!'];
@@ -47,14 +47,14 @@ describe('movie reducer', () => {
   });
 
   it('should handle FETCH_MOVIE_SUCCESS', () => {
-    expect(movieReducer(initialState, { type: MoviesActions.FETCH_MOVIE_SUCCESS, payload: MovieMockData })).toEqual({
+    expect(movieReducer(initialState, { type: MoviesActions.FETCH_MOVIE_SUCCESS, payload: movieMockData })).toEqual({
       ...initialState,
-      movie: MovieMockData,
+      movie: movieMockData,
     });
   });
 
   it('should handle FETCH_MOVIES_SUCCESS', () => {
-    const data = { data: [{ ...MovieMockData }], offset: 0, limit: 10, total: 1 };
+    const data = { data: [{ ...movieMockData }], offset: 0, limit: 10, total: 1 };
     expect(movieReducer(initialState, { type: MoviesActions.FETCH_MOVIES_SUCCESS, payload: data })).toEqual({
       ...initialState,
       ...data,
@@ -62,18 +62,18 @@ describe('movie reducer', () => {
   });
 
   it('should handle ADD_MOVIE_SUCCESS', () => {
-    const state = { ...initialState, data: [MovieMockData], totalAmount: 1 };
-    const addedMovie = { ...MovieMockData, id: 1, title: (Math.random() + 1).toString(36).substring(4) };
+    const state = { ...initialState, data: [movieMockData], totalAmount: 1 };
+    const addedMovie = { ...movieMockData, id: 1, title: (Math.random() + 1).toString(36).substring(4) };
     expect(movieReducer(state, { type: MoviesActions.ADD_MOVIE_SUCCESS, payload: addedMovie })).toEqual({
       ...initialState,
-      data: [MovieMockData, addedMovie],
+      data: [movieMockData, addedMovie],
       totalAmount: 2,
     });
   });
 
   it('should handle EDIT_MOVIE_SUCCESS', () => {
-    const state = { ...initialState, data: [MovieMockData], totalAmount: 1 };
-    const editedData = { ...MovieMockData, title: (Math.random() + 1).toString(36).substring(4) };
+    const state = { ...initialState, data: [movieMockData], totalAmount: 1 };
+    const editedData = { ...movieMockData, title: (Math.random() + 1).toString(36).substring(4) };
     expect(movieReducer(state, { type: MoviesActions.EDIT_MOVIE_SUCCESS, payload: editedData })).toEqual({
       ...initialState,
       data: [editedData],
@@ -82,8 +82,8 @@ describe('movie reducer', () => {
   });
 
   it('should handle DELETE_MOVIE_SUCCESS', () => {
-    const state = { ...initialState, data: [MovieMockData], totalAmount: 1 };
-    expect(movieReducer(state, { type: MoviesActions.DELETE_MOVIE_SUCCESS, payload: MovieMockData.id })).toEqual({
+    const state = { ...initialState, data: [movieMockData], totalAmount: 1 };
+    expect(movieReducer(state, { type: MoviesActions.DELETE_MOVIE_SUCCESS, payload: movieMockData.id })).toEqual({
       ...initialState,
       data: [],
       totalAmount: 0,

@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { FieldError, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { Movie } from 'reducers/movieReducer/types';
 import GenresInput from 'components/GenresInput';
 import Loader from 'components/Loader';
 import Input from 'components/Input';
 import Button from 'components/Button';
-import { genres } from '../../../__mocks__/data';
 import { testingConstants } from 'utils/Constants';
+import { genres } from '../../../__mocks__/data';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { yupResolver } = require('@hookform/resolvers/yup');
 
 interface MovieFormProps {
   movie?: Movie;
