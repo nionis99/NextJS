@@ -101,7 +101,7 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
               )}
             </>
           )}
-          <Image src={poster_path} alt={title} />
+          <Image src={poster_path} alt={title} width={400} height={600} />
         </div>
         <p className="flex w-full">
           <span className="font-bold">{title}</span>

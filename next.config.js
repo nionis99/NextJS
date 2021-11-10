@@ -18,6 +18,6 @@ module.exports = {
     return config;
   },
   images: {
-    domains: ['tmdb.org'],
+    domains: ['image.tmdb.org'],
   },
 };
