@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import useStateSelector from 'hooks/useStateSelector';
 import DeleteConfirmation from 'components/Modals/DeleteConfirmation';
 import MovieFormModal from 'components/Modals/MovieFormModal';
+import Image from 'components/Image';
 import { deleteMovie } from 'actions/movieActions';
 import { Movie } from 'reducers/movieReducer/types';
 import Dots from 'assets/icons/dots.svg';

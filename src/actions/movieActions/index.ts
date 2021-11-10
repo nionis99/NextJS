@@ -26,9 +26,9 @@ export enum MoviesActions {
 export const fetchMovies =
   (sortBy: string | string[], filter: string | string[], searchValue: string | string[]): ThunkResult<void> =>
   (dispatch) => {
+    dispatch({ type: MoviesActions.FETCH_MOVIES });
     const query = `?search=${searchValue}&sortBy=${sortBy}&sortOrder=desc&searchBy=title
     ${filter && filter !== 'All' ? '&filter=' + filter : ''}`;
-    dispatch({ type: MoviesActions.FETCH_MOVIES });
     return api
       .get<Movies>(`/movies${query}`)
       .then(({ data }) => dispatch({ type: MoviesActions.FETCH_MOVIES_SUCCESS, payload: data }))
