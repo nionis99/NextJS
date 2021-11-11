@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { fetchMovie, fetchMovies } from 'actions/movieActions';
 import useStateSelector from 'hooks/useStateSelector';
@@ -8,12 +7,20 @@ import Content from 'layout/Content';
 import MovieDetailsHeader from 'layout/MovieDetailsHeader';
 import MovieFormModal from 'components/Modals/MovieFormModal';
 import Footer from 'layout/Footer';
+import { NextPage } from 'next';
 import { ROUTES } from 'utils/Constants';
+import { wrapper } from '../../store';
+import { AnyAction } from 'redux';
 
-const MoviesPage = () => {
-  const dispatch = useDispatch();
-  const { replace, query, pathname } = useRouter();
-  const { searchValue = '', genre: genreFilter = '', sortBy: sortByValue = 'genres', movie: movieId = '' } = query;
+interface Props {
+  searchValue: string | string[];
+  genreFilter: string | string[];
+  sortByValue: string | string[];
+  movieId: string | string[];
+}
+
+const MoviesPage: NextPage<Props> = ({ searchValue, movieId }) => {
+  const { replace, pathname } = useRouter();
   const [isMovieFormOpen, setIsMovieFormOpen] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState(searchValue);
 
@@ -34,17 +41,7 @@ const MoviesPage = () => {
     return searchInputValue ? replace(`${ROUTES.search}/${searchInputValue}`) : replace(ROUTES.search);
   };
 
-  const onMovieClick = (movieId: string) => {
-    return replace({ pathname, search: `?movie=${movieId}` }, `${ROUTES.search}/${searchInputValue}?movie=${movieId}`);
-  };
-
-  useEffect(() => {
-    dispatch(fetchMovies(sortByValue, genreFilter, searchValue));
-  }, [dispatch, sortByValue, genreFilter, searchValue]);
-
-  useEffect(() => {
-    if (movieId) dispatch(fetchMovie(movieId));
-  }, [dispatch, movieId]);
+  const onMovieClick = (movieId: string) => replace({ pathname, search: `?movie=${movieId}` });
 
   return (
     <>
@@ -55,7 +52,7 @@ const MoviesPage = () => {
         <SearchHeader
           onSearchSubmit={onSearchSubmit}
           openAddMovie={onOpenAddMovieForm}
-          defaultSearchValue={searchValue}
+          defaultSearchValue={searchInputValue}
           setSearchValue={setSearchInputValue}
         />
       )}
@@ -70,5 +67,14 @@ const MoviesPage = () => {
     </>
   );
 };
+
+MoviesPage.getInitialProps = wrapper.getInitialPageProps((store) => async ({ query }) => {
+  const { sortBy: sortByValue = 'genres', searchValue = '', genre: genreFilter = '', movie: movieId = '' } = query;
+
+  if (movieId) await store.dispatch(fetchMovie(movieId) as unknown as AnyAction);
+  await store.dispatch(fetchMovies(sortByValue, genreFilter, searchValue) as unknown as AnyAction);
+
+  return { searchValue, movieId };
+});
 
 export default MoviesPage;

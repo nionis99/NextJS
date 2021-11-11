@@ -1,17 +1,8 @@
 import React from 'react';
-import Head from 'next/head';
-import type { AppProps } from 'next/app';
-import { Provider } from 'react-redux';
-import store from '../store';
+import { AppProps } from 'next/app';
+import { wrapper } from 'store';
 import '../styles/index.css';
 
-const MyApp = ({ Component, pageProps }: AppProps) => (
-  <Provider store={store}>
-    <Head>
-      <title>NextJS App</title>
-    </Head>
-    <Component {...pageProps} />
-  </Provider>
-);
+const MyApp = ({ Component, pageProps }: AppProps) => <Component {...pageProps} />;
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

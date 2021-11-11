@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { MoviesActions } from 'actions/movieActions';
-import { MovieActionsTypes } from 'actions/movieActions/types';
+import { HYDRATE } from 'next-redux-wrapper';
 import { Movie } from './types';
 
 export interface MoviesState {
@@ -39,8 +39,10 @@ export const initialState = {
   deleteMovieError: [],
 };
 
-const moviesReducer: Reducer<MoviesState, MovieActionsTypes> = (state = initialState, action) => {
+const moviesReducer: Reducer<MoviesState> = (state = initialState, action) => {
   switch (action.type) {
+    case HYDRATE:
+      return { ...state, ...action.payload.movies };
     case MoviesActions.FETCH_MOVIE:
       return { ...state, getMovieLoading: true };
     case MoviesActions.FETCH_MOVIES:
@@ -89,7 +91,6 @@ const moviesReducer: Reducer<MoviesState, MovieActionsTypes> = (state = initialS
         editMovieLoading: false,
       };
     case MoviesActions.DELETE_MOVIE_SUCCESS:
-      action.payload;
       return {
         ...state,
         data: state.data.filter((data) => data.id !== action.payload),
